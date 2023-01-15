@@ -132,7 +132,6 @@ def image_enhancement(input_image, output_image, sigma_minimum = 1.0, sigma_maxi
     if VS(itk.Version.GetITKVersion()) < VS("5.0.0"):
         print("ITK 5.0.0 or newer is required.")
         sys.exit(1)
-    print(itk.Version.GetITKVersion())
 
     # parser = argparse.ArgumentParser(
     #     description="Segment blood vessels with multi-scale Hessian-based measure."
@@ -240,7 +239,15 @@ with tab2:
             im.save("assets/example.png")
 
             #showing the image
-	    st.image(image1, "Image to be predicted")
+            column1, column2 = st.columns(2)
+
+            with column1:
+              st.subheader("User Uploaded Image")
+              st.image(image1, "Image to be predicted")
+            with column2:
+              st.subheader("Enhanced Image")
+              image_enhancement("assets/example.png","assets/enhance.png", sigma_minimum = 0.5, sigma_maximum = 0.5, sigma_steps = 10)
+
             #file details
             #to get the file information
             file_details = {
@@ -340,6 +347,12 @@ with tab3:
             im = Image.open(image1)
             #save the image
             im.save("assets/example1.png")
+
+            #about parameters
+            st.subheader("About Parameters")
+            st.markdown("**Sigma Minimum** - Highlight more cracks")
+            st.markdown("**Sigma Maximum** - Highlight visible cracks")
+            st.markdown("**Sigma Steps** - Helps sigma maximum to highlight the cracks more")
 
             #header saying tune the parameter
             st.subheader("Tune the parameters")
