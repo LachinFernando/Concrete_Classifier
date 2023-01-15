@@ -247,6 +247,7 @@ with tab2:
             with column2:
               st.subheader("Enhanced Image")
               image_enhancement("assets/example.png","assets/enhance.png", sigma_minimum = 0.5, sigma_maximum = 0.5, sigma_steps = 10)
+              st.image("assets/enhance.png", caption = "Enhance Image")
 
             #file details
             #to get the file information
