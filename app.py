@@ -240,16 +240,7 @@ with tab2:
             im.save("assets/example.png")
 
             #showing the image
-	    column1, column2 = st.columns(2)
-	    with column1:
-		st.subheader("User Uploaded Image")
-            	st.image(image1, "Image to be predicted")
-	    with column2:
-		st.subheader("Enhanced Image")
-		image_enhancement("assets/example.png","assets/enhance.png", sigma_minimum = 0.5, sigma_maximum = 0.5, sigma_steps = 10)
-		st.image("assets/enhance.png", caption = "Enhance Image")
-		
-
+	    st.image(image1, "Image to be predicted")
             #file details
             #to get the file information
             file_details = {
